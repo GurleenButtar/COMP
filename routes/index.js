@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/Portfolio', home);
+router.get('/', home);
 
 function home (req, res, next) {
-  res.render('portfolio',
+  res.render('Portfolio',
    { 
      title: 'Home'
      });
