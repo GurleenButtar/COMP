@@ -1,20 +1,22 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let usersController = require('../controller/user');
+let passport = require('passport');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', function(req, res, next) {  
+  res.render('users', { 
+    title: 'Users',
+    userName: req.user ? req.user.username : ''
+  });
 });
-router.get('/gurleen',gurleen);
 
+router.get('/signup', usersController.renderSignup);
+router.post('/signup', usersController.signup);
 
-/* 2nd route. */
+router.get('/signin', usersController.renderSignin);
+router.post('/signin', usersController.signin);
 
+router.get('/signout', usersController.signout);
 
-function gurleen (req, res, next) {
-  res.render('index',
-   { 
-     title: 'Express' // add variables to be inserted//
-     });
-};
 module.exports = router;
